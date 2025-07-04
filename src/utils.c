@@ -18,7 +18,6 @@ void pausar_sistema() {
 }
 
 
-
 void retirar_enter(char str[]) {
     *(str + strlen(str) - 1) = '\0';
 }

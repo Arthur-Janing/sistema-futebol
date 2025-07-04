@@ -30,10 +30,8 @@ void consulta_e_mostra_jogador_por_nome(NoJogador* inicio_lista) {
     NoJogador* jogador_encontrado = consulta_jogador_por_nome(inicio_lista, nome_busca);
 
     if (jogador_encontrado != NULL) {
-        
         mostrar_jogador_detalhado(jogador_encontrado);
-
-
+        printf("\n\n");
     } else {
         printf("\nJogador com o nome '%s' nao foi encontrado.\n", nome_busca);
     }
@@ -88,7 +86,7 @@ void localizar_jogadores_por_faixa_salarial(NoJogador* inicio_lista) {
     }
 
     if (encontrados == 0) {
-        printf("\nNenhum jogador encontrado nesta faixa salarial.\n");
+        printf("\nNenhum jogador encontrado com esses salarios.\n");
     }
     pausar_sistema();
 }
@@ -114,6 +112,7 @@ void localizar_jogador_maior_salario(NoJogador* inicio_lista) {
 
     printf("\nJogador com o maior salario encontrado:\n");
     mostrar_jogador_detalhado(jogador_maior_salario);
+    printf("\n\n");
     pausar_sistema();
 }
 
@@ -159,6 +158,7 @@ void localizar_jogos_por_adversario(NoPartida* inicio_lista) {
     while (atual != NULL) {
         if (strcmp(atual->dados.adversario, adversario_busca) == 0) {
             mostrar_partida_detalhada(atual);
+            printf("\n\n"); 
             encontrados++;
         }
         atual = atual->proximo;

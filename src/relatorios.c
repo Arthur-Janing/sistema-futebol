@@ -7,7 +7,6 @@
 void mostrar_jogador_detalhado(NoJogador* jogador) {
     if (jogador == NULL) return;
 
-    
     printf("Nome: %s\n", jogador->dados.nome);
     printf("Idade: %d\n", jogador->dados.idade);
     printf("Posicao: %s\n", jogador->dados.posicao);
@@ -26,8 +25,6 @@ void mostrar_jogador_detalhado(NoJogador* jogador) {
 }
 
 
-
-
 void relatorio_completo_jogadores(NoJogador* inicio_lista) {
     limpar_tela();
     printf("======= Relatorio Completo de Jogadores =======\n");
@@ -38,6 +35,7 @@ void relatorio_completo_jogadores(NoJogador* inicio_lista) {
         NoJogador* atual = inicio_lista;
         while(atual != NULL) {
             mostrar_jogador_detalhado(atual);
+            printf("\n\n"); 
             atual = atual->proximo;
         }
         printf("----------------------------------------\n");
@@ -86,7 +84,7 @@ void relatorio_valor_time(NoJogador* inicio_lista) {
         printf("\nNenhum jogador ativo no time.\n");
     } else {
         printf("Numero de jogadores ativos: %d\n", jogadores_ativos);
-        printf("Valor total do time (soma dos passes): R$ %.2f\n", valor_total);
+        printf("Valor total do time: R$ %.2f\n", valor_total);
     }
     pausar_sistema();
 }
@@ -114,6 +112,7 @@ void relatorio_completo_partidas(NoPartida* inicio_lista) {
         NoPartida* atual = inicio_lista;
         while(atual != NULL) {
             mostrar_partida_detalhada(atual);
+            printf("\n\n"); 
             atual = atual->proximo;
         }
         printf("----------------------------------------\n");
