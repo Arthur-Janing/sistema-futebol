@@ -79,7 +79,7 @@ void cadastrar_jogador(ListaJogadores* lista) {
     getchar();
 
     if (novo_no->dados.status == 0) {
-        printf("Digite o motivo da inatividade ( VENDIDO ou RECUPERACAO): ");
+        printf("Digite o motivo da inatividade ( vendido ou de recuperacao): ");
         fgets(novo_no->dados.motivo, MAX_MOTIVO, stdin);
         retirar_enter(novo_no->dados.motivo);
         to_upper(novo_no->dados.motivo);
@@ -114,21 +114,21 @@ void cadastrar_partida(ListaPartidas* lista_partidas, ListaJogadores* lista_joga
         if (escalacao_completa[i] == ',' || escalacao_completa[i] == '\0') {
             nome_jogador_atual[nome_atual] = '\0';
 
-            // Limpa espaços em branco do início
+            
             int inicio_nome = 0;
             while (nome_jogador_atual[inicio_nome] == ' ') inicio_nome++;
 
-            // Ponteiro para o nome limpo
+            
             char *nome_limpo = &nome_jogador_atual[inicio_nome];
 
-            // Limpa espaços em branco do final
+          
             int len = strlen(nome_limpo);
             while (len > 0 && nome_limpo[len - 1] == ' ') nome_limpo[--len] = '\0';
 
             if (strlen(nome_limpo) > 0) {
                 to_upper(nome_limpo);
                 if (consulta_jogador_por_nome(lista_jogadores->inicio_lista, nome_limpo) == NULL) {
-                    printf("\nO jogador \"%s\" nao esta cadastrado no sistema. Cadastre-o antes de prosseguir.\n", nome_limpo);
+                    printf("\nO jogador \"%s\" nao esta cadastrado no sistema. Cadastre antes de continuar.\n", nome_limpo);
                     pausar_sistema();
                     return;
                 }
@@ -152,7 +152,7 @@ void cadastrar_partida(ListaPartidas* lista_partidas, ListaJogadores* lista_joga
 
     NoPartida *novo_no = (NoPartida *)malloc(sizeof(NoPartida));
     if (novo_no == NULL) {
-        printf("Erro ao alocar memória para a nova partida.\n");
+        printf("Erro ao alocar na rip.\n");
         pausar_sistema();
         return;
     }
@@ -173,11 +173,11 @@ void cadastrar_partida(ListaPartidas* lista_partidas, ListaJogadores* lista_joga
     retirar_enter(novo_no->dados.local);
     to_upper(novo_no->dados.local);
 
-    printf("Digite o placar da partida (ex: 2-1): ");
+    printf("Digite o placar da partida: ");
     fgets(novo_no->dados.placar, 10, stdin);
     retirar_enter(novo_no->dados.placar);
 
-    printf("Digite o resultado (VITORIA, DERROTA ou EMPATE): ");
+    printf("Digite o resultado (vitoria, derrota ou empate): ");
     fgets(novo_no->dados.resultado, 10, stdin);
     retirar_enter(novo_no->dados.resultado);
     to_upper(novo_no->dados.resultado);
@@ -189,6 +189,6 @@ void cadastrar_partida(ListaPartidas* lista_partidas, ListaJogadores* lista_joga
     novo_no->proximo = NULL;
     inserir_partida_no_inicio(lista_partidas, novo_no);
     
-    printf("\nPartida cadastrada com sucesso!\n");
+    printf("\nPartida cadastrada\n");
     pausar_sistema();
 }
